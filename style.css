@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: #111;
+  color: #f5f5f5;
+}
+
+header.hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('header-bg.jpg') center/cover no-repeat;
+  color: #fff;
+  padding: 80px 0 40px 0;
+  text-align: center;
+  position: relative;
+}
+
+header .overlay {
+  background: rgba(0,0,0,0.5);
+  padding: 40px 20px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 1.3rem;
+  color: #ccc;
+  margin: 0;
+}
+
+main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.services {
+  margin-bottom: 60px;
+}
+
+.services h2 {
+  font-size: 2rem;
+  color: #fff;
+  border-left: 4px solid #888;
+  padding-left: 12px;
+  margin-bottom: 32px;
+  font-weight: 600;
+}
+
+.service-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+
+.service {
+  background: #181818;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+  padding: 32px 24px;
+  min-width: 220px;
+  max-width: 300px;
+  flex: 1 1 220px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #232323;
+}
+
+.service:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
+  border-color: #444;
+}
+
+.service h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.service p {
+  color: #bbb;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.footer {
+  background: #181818;
+  color: #bbb;
+  padding: 32px 0 16px 0;
+  text-align: center;
+  border-top: 1px solid #232323;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content p {
+  font-size: 0.9rem;
+  margin: 4px 0;
+}
+
+.footer a {
+  color: #f5f5f5;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: #bdbdbd;
+}
+
+@media (max-width: 700px) {
+  .service-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  .services h2 {
+    font-size: 1.3rem;
+  }
+  .service {
+    padding: 24px 12px;
+  }
+}
