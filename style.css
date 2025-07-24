@@ -15,10 +15,28 @@ header.hero {
 }
 
 header .overlay {
-  background: rgba(0,0,0,0.5);
+  position: relative;
   padding: 40px 20px;
   border-radius: 12px;
   display: inline-block;
+  background: none;
+  overflow: hidden;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('image index/logo.png') center/contain no-repeat;
+  filter: blur(5px) brightness(0.9);
+  opacity: 0.8;
+  z-index: 0;
+    }
+
+.overlay h1,
+.overlay .slogan {
+  position: relative;
+  z-index: 1;
 }
 
 header h1 {
@@ -98,9 +116,21 @@ main {
   box-shadow: 0 2px 16px rgba(0,0,0,0.10);
   padding: 36px 28px;
   margin: 32px auto;
-  max-width: 700px;
+  max-width: 1100px;
   border: 1px solid #232323;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.prestation-gauche {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.prestation-droite {
+  text-align: right;
+  align-items: flex-end;
 }
 
 .prestation h2 {
@@ -175,6 +205,71 @@ main {
   color: #bdbdbd;
 }
 
+.logo-header {
+  display: block;
+  margin: 0 auto 18px auto;
+  max-width: 120px;
+  height: auto;
+}
+
+.navbar {
+  width: 100%;
+  background: #181818;
+  border-bottom: 1px solid #232323;
+  padding: 0;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0 24px;
+}
+
+.navbar a {
+  display: block;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 18px 0;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar a:hover,
+.navbar a:focus {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.logo-slide {
+  position: absolute;
+  left: 50%;
+  top: 50px; 
+  transform: translateX(-50%) scale(0.8);
+  max-width: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: top 0.5s, opacity 0.5s, transform 0.5s;
+  z-index: 2;
+}
+
+#main-title:hover + .logo-slide,
+#main-title:focus + .logo-slide {
+  opacity: 1;
+  top: 0; /* Le logo glisse juste au-dessus du titre */
+  transform: translateX(-50%) scale(1);
+}
+
 @media (max-width: 700px) {
   .service-list {
     flex-direction: column;
@@ -188,5 +283,18 @@ main {
   }
   .service {
     padding: 24px 12px;
+    min-width: unset;
+    max-width: 100%;
+  }
+  .prestation {
+    max-width: 98vw;
+    padding: 24px 8px;
+  }
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar li {
+    margin: 8px 0;
   }
 }
