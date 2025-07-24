@@ -270,6 +270,20 @@ main {
   transform: translateX(-50%) scale(1);
 }
 
+/* Bouton burger pour mobile */
+.navbar-toggle {
+  display: none;
+  position: absolute;
+  right: 20px;
+  top: 12px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 20;
+}
+
 @media (max-width: 700px) {
   .service-list {
     flex-direction: column;
@@ -293,8 +307,23 @@ main {
   .navbar ul {
     flex-direction: column;
     align-items: center;
+    display: none;
+    background: #181818;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.12);
+    padding-bottom: 16px;
   }
-  .navbar li {
-    margin: 8px 0;
+  .navbar.open ul {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar {
+    position: relative;
+    min-height: 56px;
   }
 }
