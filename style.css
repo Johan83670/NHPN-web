@@ -114,9 +114,9 @@ main {
   background: #181818;
   border-radius: 0;
   box-shadow: 0 2px 16px rgba(0,0,0,0.10);
-  padding: 36px 28px;
+  padding: 36px 200px;
   margin: 32px 0;
-  width: 90vw;
+  width: 80vw;
   border: 1px solid #232323;
   text-align: center;
   display: flex;
