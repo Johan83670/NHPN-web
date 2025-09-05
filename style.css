@@ -112,15 +112,19 @@ main {
 
 .prestation {
   background: #181818;
-  border-radius: 14px;
+  border-radius: 0;
   box-shadow: 0 2px 16px rgba(0,0,0,0.10);
   padding: 36px 28px;
-  margin: 32px auto;
-  max-width: 1100px;
+  margin: 32px 0;
+  width: 90vw;
   border: 1px solid #232323;
   text-align: center;
   display: flex;
   flex-direction: column;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
 }
 
 .prestation-gauche {
