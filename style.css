@@ -214,6 +214,9 @@ main {
 }
 
 .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   background: #181818;
   border-bottom: 1px solid #232323;
@@ -221,12 +224,21 @@ main {
   margin-bottom: 0;
   position: relative;
   z-index: 10;
+  height: 56px; /* Hauteur fixe de la navbar */
+}
+
+.navbar-logo img {
+  height: 56px;   /* Même hauteur que la navbar */
+  width: auto;
+  display: block;
+  margin-left: 16px;
 }
 
 .navbar ul {
-  list-style: none;
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
