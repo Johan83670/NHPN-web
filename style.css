@@ -1,3 +1,7 @@
+:root {
+  --logo-bg: #000c12; /* Remplace par la couleur de fond de ton logo (ex: #ffffff ou #111111) */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -7,11 +11,17 @@ body {
 }
 
 header.hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('header-bg.jpg') center/cover no-repeat;
-  color: #fff;
+  /* Utilise la couleur du logo comme arrière-plan du header */
+  background: var(--logo-bg);
+  color: #111; /* texte sombre si fond clair — adapte si ton fond est sombre */
   padding: 80px 0 40px 0;
   text-align: center;
   position: relative;
+}
+
+/* Si tu utilises encore .overlay::before pour l'image de fond, on le masque pour éviter chevauchement */
+.overlay::before {
+  display: none;
 }
 
 header .overlay {
@@ -22,16 +32,6 @@ header .overlay {
   background: none;
   overflow: hidden;
 }
-
-.overlay::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('image index/logo.png') center/contain no-repeat;
-  filter: blur(5px) brightness(0.9);
-  opacity: 0.8;
-  z-index: 0;
-    }
 
 .overlay h1,
 .overlay .slogan {
@@ -208,7 +208,8 @@ main {
 .logo-header {
   display: block;
   margin: 0 auto 18px auto;
-  max-width: 120px;
+  max-width: 360px; /* agrandit le logo */
+  width: 90%;
   height: auto;
 }
 
