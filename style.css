@@ -181,6 +181,7 @@ main {
   padding: 32px 0 16px 0;
   text-align: center;
   border-top: 1px solid #232323;
+  margin-top: 48px;
 }
 
 .footer-content {
@@ -190,23 +191,54 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 18px;
+}
+
+.footer-logo img {
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 8px;
 }
 
-.footer-content p {
-  font-size: 0.9rem;
-  margin: 4px 0;
-}
-
-.footer a {
+.footer-nav a {
   color: #f5f5f5;
   text-decoration: none;
-  margin: 0 8px;
+  font-weight: 500;
+  font-size: 1rem;
   transition: color 0.2s;
 }
 
-.footer a:hover {
-  color: #bdbdbd;
+.footer-nav a:hover {
+  color: #8ecae6;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.footer-social a {
+  color: #bbb;
+  font-size: 2rem;
+  transition: color 0.2s;
+}
+
+.footer-social a:hover {
+  color: #8ecae6;
+}
+
+.footer p {
+  margin: 4px 0;
+  font-size: 0.95em;
 }
 
 .logo-header {
@@ -332,6 +364,204 @@ main {
   object-fit: cover;
 }
 
+.main-title {
+  font-size: 2.4rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 48px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-bottom: 3px solid #bbb;
+  padding-bottom: 12px;
+}
+
+
+/* --- PRODUITS --- */
+.toolbar {
+  background: #111114;
+  border-bottom: 1px solid #232323;
+}
+
+.tools {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid #2a2b2f;
+  background: #141518;
+  color: #ccc;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.chip.active {
+  background: #f5f5f5;
+  color: #111;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background: #141518;
+  border: 1px solid #2a2b2f;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+.search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #f5f5f5;
+  font-size: 0.95rem;
+  width: 200px;
+}
+
+.select {
+  background: #141518;
+  border: 1px solid #2a2b2f;
+  color: #ccc;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 16px;
+}
+
+.card {
+  background: #181818;
+  border: 1px solid #232323;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.thumb {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #101114;
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.body {
+  padding: 16px;
+  display: grid;
+  gap: 8px;
+}
+.badge {
+  font-size: 12px;
+  color: #aaa;
+}
+.title {
+  font-weight: 600;
+}
+.meta {
+  display: flex;
+  justify-content: space-between;
+}
+.price {
+  font-weight: 700;
+}
+.cta {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.btn {
+  flex: 1;
+  background: #f5f5f5;
+  color: #111;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn.outline {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid #2a2b2f;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #181818;
+  color: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90vw;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  text-align: center;
+}
+.modal-close {
+  position: absolute;
+  top: 12px; right: 18px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.social-links, .contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.contact-btn {
+  min-width: 220px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* --- RESPONSIVE --- */
+
 @media (max-width: 700px) {
   .service-list {
     flex-direction: column;
@@ -375,3 +605,10 @@ main {
     min-height: 56px;
   }
 }
+
+
+
+
+
+
+

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produit - DETAILLIUM</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
@@ -20,6 +21,142 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
-  <!-- ...le reste de la page... -->
+  <header>
+  <h2 class="main-title">Nos produits</h2>
+  <p class="sub">Découvrez notre sélection triée par catégories : <strong>Extérieur</strong>, <strong>Intérieur</strong> et <strong>Accessoires</strong>. Filtrez, cherchez et comparez facilement.</p>
+  </header>
+
+
+<!-- BARRE D’OUTILS (Filtres + Recherche + Tri) -->
+<div class="toolbar">
+<div class="tools" role="region" aria-label="Outils de filtrage et recherche">
+<div class="filters" role="tablist" aria-label="Filtres catégories">
+<button class="chip active" data-filter="all" role="tab" aria-selected="true">Tous</button>
+<button class="chip" data-filter="exterieur" role="tab">Extérieur</button>
+<button class="chip" data-filter="interieur" role="tab">Intérieur</button>
+<button class="chip" data-filter="accessoires" role="tab">Accessoires</button>
+</div>
+<label class="search" aria-label="Recherche produits">
+<span class="sr-only">Recherche</span>
+<input id="search" type="search" placeholder="Rechercher un produit…" autocomplete="off" />
+</label>
+<select id="sort" class="select" aria-label="Trier les produits">
+<option value="default">Tri par défaut</option>
+<option value="price-asc">Prix : du - cher au + cher</option>
+<option value="price-desc">Prix : du + cher au - cher</option>
+<option value="name-asc">Nom : A → Z</option>
+<option value="name-desc">Nom : Z → A</option>
+</select>
+</div>
+</div>
+
+
+<!-- GRILLE PRODUITS -->
+<main>
+<section class="grid" id="productGrid" aria-live="polite">
+<!-- Exemple de cartes produits -->
+
+<article class="card" data-category="interieur" data-name="Nettoyant multi-surfaces" data-price="9.90">
+<div class="thumb"><img src="images/produits/nettoyant-multi-surfaces.jpg" alt="Nettoyant multi-surfaces DETAILLIUM" loading="lazy"></div>
+<div class="body">
+<div class="badge">Intérieur</div>
+<div class="title">Nettoyant multi-surfaces</div>
+<div class="meta">
+<span class="muted">500ml</span>
+<span class="price">9,90 €</span>
+</div>
+<div class="cta">
+<button class="btn">Ajouter</button>
+<button class="btn outline">Détails</button>
+</div>
+<!-- Description cachée à afficher dans la modale -->
+<div class="desc" style="display:none;">
+Nettoyant efficace pour toutes les surfaces intérieures. Parfum frais, sans traces.
+</div>
+</div>
+</article>
+
+<article class="card" data-category="exterieur" data-name="Mousse active pH neutre" data-price="14.90">
+<div class="thumb"><img src="images/produits/mousse-active.jpg" alt="Mousse active pH neutre DETAILLIUM" loading="lazy"></div>
+<div class="body">
+<div class="badge">Extérieur</div>
+<div class="title">Mousse active pH neutre</div>
+<div class="meta">
+<span class="muted">1L</span>
+<span class="price">14,90 €</span>
+</div>
+<div class="cta">
+<button class="btn">Ajouter</button>
+<button class="btn outline">Détails</button>
+</div>
+</div>
+</article>
+<!-- ... Autres produits ici ... -->
+
+<article class="card" data-category="accessoires" data-name="Gant microfibre" data-price="7.50">
+  <div class="thumb"><img src="images/produits/gant-microfibre.jpg" alt="Gant microfibre DETAILLIUM" loading="lazy"></div>
+  <div class="body">
+    <div class="badge">Accessoires</div>
+    <div class="title">Gant microfibre</div>
+    <div class="meta"></div>
+    <span class="price">7,50 €</span>
+    <div class="cta"> 
+      <button class="btn">Ajouter</button>
+      <button class="btn outline">Détails</button>
+    </div>
+    <!-- Description cachée à afficher dans la modale -->
+    <div class="desc" style="display:none;">
+      Gant doux et absorbant pour un lavage sans rayures.
+    </div>
+  </div>
+</article>
+
+<!--class="note">Astuce : pour ajouter un produit, duplique une carte <code>&lt;article class="card" ...&gt;</code>, mets à jour <code>data-category</code>, <code>data-name</code>, <code>data-price</code>, l'image et les textes.--> 
+
+</section>
+</main>
+
+
+<div id="productModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="modal-close" id="modalClose">&times;</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="image index/logo.png" alt="Logo DETAILLIUM" style="height:40px;">
+    </div>
+    <nav class="footer-nav" aria-label="Liens de pied de page">
+      <a href="index.html">Accueil</a>
+      <a href="prestation-particulier.html">Particulier</a>
+      <a href="prestation-professionel.html">Professionnel</a>
+      <a href="produit.html">Produit</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" rel="noopener">
+        <span class="material-icons" aria-hidden="true">facebook</span>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" rel="noopener">
+        <span class="material-icons" aria-hidden="true">photo_camera</span>
+      </a>
+      <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" rel="noopener">
+        <span class="material-icons" aria-hidden="true">business_center</span>
+      </a>
+    </div>
+    <p>
+      &copy; 2025 DETAILLIUM. Tous droits réservés.<br>
+      <a href="mailto:contact@detaillium.fr" style="color:#8ecae6;">contact@detaillium.fr</a>
+    </p>
+    <p style="font-size:0.85em; color:#888;">
+      Site réalisé par DETAILLIUM. <a href="mentions-legales.html" style="color:#8ecae6;">Mentions légales</a>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
