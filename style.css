@@ -560,6 +560,19 @@ main {
   gap: 10px;
 }
 
+.note {
+  display: block;
+  margin: 0 auto 32px auto;
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.15rem;
+  color: #ccc;
+  background: rgba(24,24,24,0.85);
+  padding: 18px 28px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
 /* --- RESPONSIVE --- */
 
 @media (max-width: 700px) {
