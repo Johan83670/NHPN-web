@@ -10,6 +10,7 @@ document.getElementById('close-social').onclick = function() {
 document.getElementById('close-contact').onclick = function() {
   document.getElementById('modal-contact').style.display = 'none';
 };
+
 // Fermer la modale en cliquant en dehors
 document.getElementById('modal-social').onclick = function(e) {
   if (e.target === this) this.style.display = 'none';

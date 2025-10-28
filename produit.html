@@ -45,8 +45,8 @@
 </label>
 <select id="sort" class="select" aria-label="Trier les produits">
 <option value="default">Tri par défaut</option>
-<option value="price-asc">Prix : du - cher au + cher</option>
-<option value="price-desc">Prix : du + cher au - cher</option>
+<option value="price-asc">Prix : croissant </option>
+<option value="price-desc">Prix : décroissant </option>
 <option value="name-asc">Nom : A → Z</option>
 <option value="name-desc">Nom : Z → A</option>
 </select>
@@ -60,7 +60,7 @@
 <!-- Exemple de cartes produits -->
 
 <article class="card" data-category="interieur" data-name="Nettoyant multi-surfaces" data-price="9.90">
-<div class="thumb"><img src="images/produits/nettoyant-multi-surfaces.jpg" alt="Nettoyant multi-surfaces DETAILLIUM" loading="lazy"></div>
+<div class="thumb"><img src="image index/particulier-index.jpg" alt="Nettoyant multi-surfaces DETAILLIUM" loading="lazy"></div>
 <div class="body">
 <div class="badge">Intérieur</div>
 <div class="title">Nettoyant multi-surfaces</div>
@@ -80,7 +80,7 @@ Nettoyant efficace pour toutes les surfaces intérieures. Parfum frais, sans tra
 </article>
 
 <article class="card" data-category="exterieur" data-name="Mousse active pH neutre" data-price="14.90">
-<div class="thumb"><img src="images/produits/mousse-active.jpg" alt="Mousse active pH neutre DETAILLIUM" loading="lazy"></div>
+<div class="thumb"><img src="image index/Cif-Nettoyant-Vitres-et-Multi-surfaces-7517903__PadWzQ2Nyw1OTEsIkZGRkZGRiIsMF0.png" alt="Mousse active pH neutre DETAILLIUM" loading="lazy"></div>
 <div class="body">
 <div class="badge">Extérieur</div>
 <div class="title">Mousse active pH neutre</div>
@@ -114,6 +114,28 @@ Nettoyant efficace pour toutes les surfaces intérieures. Parfum frais, sans tra
   </div>
 </article>
 
+<article class="card" data-category="interieur" data-name="Produit multi-surfaces" data-price="20">
+<div class="thumb"><img src="images/produits/produit-multi-surfaces.jpg" alt="Produit multi-surfaces DETAILLIUM" loading="lazy"></div>
+<div class="body">
+<div class="badge">Intérieur</div>
+<div class="title">Produit multi-surfaces</div>
+<div class="meta">
+<span class="muted">1L</span>
+<span class="price">20 €</span>
+</div>
+<div class="cta">
+<button class="btn">Ajouter</button>
+<button class="btn outline">Détails</button>
+</div>
+<!-- Description cachée à afficher dans la modale -->
+<div class="desc" style="display:none;">
+Poduit efficace pour toutes les surfaces intérieures. Parfum frais, sans traces.
+</div>
+</div>
+</article>
+
+
+
 <!--class="note">Astuce : pour ajouter un produit, duplique une carte <code>&lt;article class="card" ...&gt;</code>, mets à jour <code>data-category</code>, <code>data-name</code>, <code>data-price</code>, l'image et les textes.--> 
 
 </section>
@@ -143,7 +165,7 @@ Nettoyant efficace pour toutes les surfaces intérieures. Parfum frais, sans tra
       <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" rel="noopener">
         <span class="material-icons" aria-hidden="true">facebook</span>
       </a>
-      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" rel="noopener">
+      <a href="https://www.instagram.com/detaillium_/" target="_blank" aria-label="Instagram" rel="noopener">
         <span class="material-icons" aria-hidden="true">photo_camera</span>
       </a>
       <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" rel="noopener">

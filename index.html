@@ -22,7 +22,15 @@
     </ul>
   </nav>
   <header class="hero">
+    <div class="hero-slideshow" aria-hidden="true">
+      <div class="slide" style="background-image: url('image index/photo_bando1.jpg');"></div>
+      <div class="slide" style="background-image: url('image index/photo_bando2.jpg');"></div>
+      <div class="slide" style="background-image: url('image index/photo_bando3.jpg');"></div>
+      <div class="slide" style="background-image: url('image index/photo_bando4.jpg');"></div>
+    </div>
+
     <div class="overlay">
+      <!-- contenu overlay (logo / slogan) -->
       <img src="image index/logo.png" alt="Logo DETAILLIUM" class="logo-header">
     </div>
   </header>
@@ -42,22 +50,51 @@
           </p>
           <a href="prestation-particulier.html" class="btn-prestation">Voir la prestation</a>
         </div>
-        <div class="prestation-image">
-          <img src="image index/particulier-index.jpg" alt="Lavage particulier">
+
+        <!-- before/after images (à droite du texte) -->
+        <div class="prestation-image before-after">
+          <div class="ba-track ba-before">
+            <figure class="ba-item"><img src="image index/AvAp_Particulier/Image_AvAp_Particulier3.jpg" alt="Avant 1"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Particulier/Image_AvAp_Particulier6.jpg" alt="Avant 2"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Particulier/Image_AvAp_Particulier12.jpg" alt="Avant 3"></figure>
+          </div>
+          <div class="ba-track ba-after">
+            <figure class="ba-item"><img src="image index/AvAp_Particulier/Image_AvAp_Particulier4.jpg" alt="Après 1"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Particulier/Image_AvAp_Particulier5.jpg" alt="Après 2"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Particulier/Image_AvAp_Particulier7.jpg" alt="Après 3"></figure>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="prestation prestation-droite">
-      <h2><strong>Professionnel</strong> </h2>
-      <p>
-        Vous êtes un professionnel ? Offrez à votre flotte de véhicules ou à vos locaux un nettoyage irréprochable,<br>
-        adapté à vos exigences et à votre activité.<br>
-        Bénéficiez d’un service flexible, rapide et discret, directement sur site.<br>
-        <strong>Valorisez votre image auprès de vos clients et collaborateurs grâce à des prestations sur-mesure.</strong>
-      </p>
-      <!-- Ajoute ici une image ou plus d'explications si besoin -->
-      <a href="prestation-professionel.html" class="btn-prestation">Voir la prestation</a>
+      <div class="prestation-content reverse">
+        <div class="prestation-image before-after">
+          <div class="ba-track ba-before">
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro1.jpg" alt="Avant 1"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro3.jpg" alt="Avant 2"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro5.jpg" alt="Avant 3"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro7.jpg" alt="Avant 4"></figure>
+          </div>
+          <div class="ba-track ba-after">
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro2.jpg" alt="Après 1"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro4.jpg" alt="Après 2"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro6.jpg" alt="Après 3"></figure>
+            <figure class="ba-item"><img src="image index/AvAp_Professionel/AvAp_Pro8.jpg" alt="Après 4"></figure>
+          </div>
+        </div>
+
+        <div class="prestation-texte">
+          <h2><strong>Professionnel</strong></h2>
+          <p>
+            Vous êtes un professionnel ? Offrez à votre flotte de véhicules ou à vos locaux un nettoyage irréprochable,
+            adapté à vos exigences et à votre activité.<br>
+            Bénéficiez d’un service flexible, rapide et discret, directement sur site.<br>
+            <strong>Valorisez votre image auprès de vos clients et collaborateurs grâce à des prestations sur-mesure.</strong>
+          </p>
+          <a href="prestation-professionel.html" class="btn-prestation">Voir la prestation</a>
+        </div>
+      </div>
     </section>
 
     <section class="prestation prestation-gauche">
@@ -88,7 +125,7 @@
         <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" rel="noopener">
           <span class="material-icons" aria-hidden="true">facebook</span>
         </a>
-        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" rel="noopener">
+        <a href="https://www.instagram.com/detaillium_/" target="_blank" aria-label="Instagram" rel="noopener">
           <span class="material-icons" aria-hidden="true">photo_camera</span>
         </a>
         <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" rel="noopener">

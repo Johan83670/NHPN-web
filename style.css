@@ -26,17 +26,64 @@ header.hero {
 
 header .overlay {
   position: relative;
-  padding: 40px 20px;
-  border-radius: 12px;
-  display: inline-block;
-  background: none;
-  overflow: hidden;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 20px;
 }
 
-.overlay h1,
-.overlay .slogan {
+.hero {
   position: relative;
-  z-index: 1;
+  overflow: hidden;
+  min-height: 320px; /* adapte si besoin */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  pointer-events: none;
+}
+
+/* chaque slide couvre tout le header */
+.hero-slideshow .slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.03); /* évite bordures visibles après flou */
+  filter: blur(4px) brightness(0.75);
+  transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+}
+
+/* slide visible */
+.hero-slideshow .slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* réduit le flou / animation si l'utilisateur préfère moins de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slideshow .slide,
+  .hero-slideshow .slide.active {
+    transition: none;
+    filter: blur(2px) brightness(0.85);
+  }
+}
+
+/* petit ajustement responsive */
+@media (max-width:700px) {
+  .hero { min-height: 220px; }
+  .hero-slideshow .slide { filter: blur(4px) brightness(0.75); }
+  .logo-header { height: 48px; width: auto; }
 }
 
 header h1 {
@@ -336,7 +383,6 @@ main {
 .prestation-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 40px;
 }
 
@@ -348,35 +394,61 @@ main {
 .prestation-image {
   flex: 1;
   position: relative;
-  min-width: 180px;
-  max-width: 320px;
+  min-width: 700px;
+  max-width: 700px;
   display: flex;
   justify-content: flex-end;
 }
 
-.prestation-image img {
+/* before/after slideshow tracks (synchronous) */
+.before-after {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
   width: 100%;
-  max-width: 320px;
-  border-radius: 16px;
-  filter: blur(2px) brightness(0.9);
-  opacity: 0.9;
-  transition: filter 0.3s, opacity 0.3s;
+  max-width: 520px;
+}
+.ba-track {
+  position: relative;
+  width: 70%;
+  overflow: hidden;
+  height: 400px;
+}
+.ba-track .ba-item {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateX(0);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.ba-track .ba-item img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+.ba-track .ba-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
 }
 
-.main-title {
-  font-size: 2.4rem;
-  color: #fff;
-  text-align: center;
-  margin-top: 32px;
-  margin-bottom: 48px;
-  letter-spacing: 2px;
-  font-weight: 800;
-  text-transform: uppercase;
-  border-bottom: 3px solid #bbb;
-  padding-bottom: 12px;
+/* small screens: stack columns */
+@media (max-width:700px) {
+  .before-after {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .ba-track {
+    width: 100%;
+    height: 220px;
+  }
 }
-
 
 /* --- PRODUITS --- */
 .toolbar {
@@ -710,6 +782,37 @@ main {
   }
   .card .body {
     padding: 10px 4px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navbar-logo img,
+  .logo-header {
+    transition: transform 240ms cubic-bezier(.2,.9,.2,1), filter 240ms ease;
+    will-change: transform;
+    transform-origin: center;
+    backface-visibility: hidden;
+  }
+
+  .navbar-logo:hover img,
+  .navbar-logo:focus img,
+  .logo-header:hover,
+  .logo-header:focus {
+    transform: scale(1.12);
+    filter: drop-shadow(0 10px 24px rgba(0,0,0,0.35));
+  }
+}
+
+/* optionnel : réduire l'ampleur de l'effet sur écrans très petits */
+@media (max-width: 480px) {
+  .navbar-logo img,
+  .logo-header {
+    transition: transform 180ms ease;
+  }
+  .navbar-logo:hover img,
+  .logo-header:hover {
+    transform: scale(1.06);
+    filter: none;
   }
 }
 
