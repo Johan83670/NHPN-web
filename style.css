@@ -394,13 +394,14 @@ main {
 .prestation-image {
   flex: 1;
   position: relative;
-  min-width: 700px;
-  max-width: 700px;
+  min-width: 600px; /* permet au conteneur de rétrécir correctement */
+  max-width: 700px; /* garde le look desktop */
   display: flex;
   justify-content: flex-end;
+  box-sizing: border-box;
 }
 
-/* before/after slideshow tracks (synchronous) */
+/* before/after responsive tweaks */
 .before-after {
   display: flex;
   gap: 10px;
@@ -408,23 +409,29 @@ main {
   justify-content: center;
   overflow: hidden;
   width: 100%;
-  max-width: 520px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
+/* chaque colonne occupe la moitié ; hauteur responsive */
 .ba-track {
   position: relative;
-  width: 70%;
+  width: 50%;
   overflow: hidden;
-  height: 400px;
+  height: clamp(160px, 28vw, 420px); /* hauteur adaptative selon l'écran */
 }
+
+/* éléments de slide couvrent tout le track */
 .ba-track .ba-item {
   position: absolute;
-  top: 0; left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
   transform: translateX(0);
   transition: opacity 600ms ease, transform 600ms ease;
 }
+
 .ba-track .ba-item img {
   width: 100%;
   height: 100%;
@@ -432,21 +439,32 @@ main {
   display: block;
   border-radius: 8px;
 }
+
 .ba-track .ba-item.active {
   opacity: 1;
   transform: translateX(0);
   z-index: 2;
 }
 
-/* small screens: stack columns */
-@media (max-width:700px) {
+/* petits écrans : empilement et hauteur différente */
+@media (max-width: 700px) {
+  .prestation-content {
+    flex-direction: column;
+    gap: 16px;
+  }
   .before-after {
     flex-direction: column;
+    gap: 12px;
     max-width: 100%;
   }
   .ba-track {
     width: 100%;
-    height: 220px;
+    height: clamp(160px, 45vw, 260px);
+  }
+  .prestation-image {
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 100%;
   }
 }
 
