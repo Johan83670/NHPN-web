@@ -90,10 +90,34 @@
           <span class="material-icons" style="vertical-align:middle;">call</span>
           <span style="vertical-align:middle;">Appeler</span>
         </a>
-        <a href="mailto:contact@detaillium.fr" class="btn-prestation">
+
+        <!-- remplace le lien mail par un bouton qui lance le flux -->
+        <button id="start-mail-flow" class="btn-prestation" aria-controls="modal-mail-flow">
           <span class="material-icons" style="vertical-align:middle;">email</span>
           <span style="vertical-align:middle;">Envoyer un mail</span>
-        </a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale pour le flux mail (choix Pro / Particulier -> prestations -> mailto) -->
+  <div id="modal-mail-flow" class="modal" style="display:none;">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="mail-flow-title">
+      <button class="modal-close" id="close-mail-flow" aria-label="Fermer">&times;</button>
+      <h3 id="mail-flow-title">Vous êtes&nbsp;:</h3>
+
+      <div id="mail-type-choices" style="display:flex; gap:12px; margin-top:10px; justify-content:center;">
+        <button class="btn-prestation" data-type="particulier">Particulier</button>
+        <button class="btn-prestation" data-type="professionnel">Professionnel</button>
+      </div>
+
+      <div id="mail-prestations" style="margin-top:18px; display:none; flex-direction:column; gap:10px; align-items:stretch;">
+        <p style="text-align:center; color:var(--muted);">Choisissez la prestation souhaitée :</p>
+        <div id="prestations-list" style="display:flex; gap:10px; flex-direction:column; align-items:stretch;"></div>
+      </div>
+
+      <div id="mail-help" style="margin-top:12px; color:#999; font-size:0.95rem; text-align:center;">
+        Le sujet du mail sera pré‑rempli selon votre sélection.
       </div>
     </div>
   </div>
