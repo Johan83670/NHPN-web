@@ -10,27 +10,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Hero slideshow auto-rotation (ne pas dupliquer si déjà présent)
 document.addEventListener('DOMContentLoaded', function () {
+  const hero = document.querySelector('.hero');
   const slides = Array.from(document.querySelectorAll('.hero-slideshow .slide'));
-  if (!slides.length) return;
+  if (!hero || !slides.length) return;
 
-  let current = 0;
   const intervalMs = 6000; // durée d'affichage d'une image
-  slides[current].classList.add('active');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let current = 0;
+  let timer = null;
 
-  // autoplay, respecte prefers-reduced-motion
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduce) {
-    const timer = setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, intervalMs);
-
-    // pause on hover / touch
-    const hero = document.querySelector('.hero');
-    hero.addEventListener('mouseenter', () => clearInterval(timer), { once: true });
-    hero.addEventListener('touchstart', () => clearInterval(timer), { once: true });
+  function setActiveSlide(index) {
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
   }
+
+  function stopAutoPlay() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function startAutoPlay() {
+    stopAutoPlay();
+    if (prefersReduced.matches || slides.length <= 1) return;
+    timer = setInterval(() => {
+      current = (current + 1) % slides.length;
+      setActiveSlide(current);
+    }, intervalMs);
+  }
+
+  // init
+  setActiveSlide(current);
+  startAutoPlay();
+
+  // pause on hover / touch / focus, resume on leave
+  const pauseEvents = ['mouseenter', 'touchstart', 'focusin'];
+  const resumeEvents = ['mouseleave', 'touchend', 'focusout'];
+  pauseEvents.forEach(evt => hero.addEventListener(evt, stopAutoPlay));
+  resumeEvents.forEach(evt => hero.addEventListener(evt, startAutoPlay));
+
+  // respect prefers-reduced-motion changes and tab visibility
+  prefersReduced.addEventListener('change', startAutoPlay);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      stopAutoPlay();
+    } else {
+      startAutoPlay();
+    }
+  });
 });
 
 // synchronous before/after slideshows: advance all groups at once
