@@ -1,0 +1,29 @@
+# Zone Administration DETAILLIUM - Accès Restreint
+# Ce fichier protège le dossier admin par authentification HTTP Basic
+
+AuthType Basic
+AuthName "Administration DETAILLIUM - Accès Restreint"
+AuthUserFile /home/votre-utilisateur/admin/.htpasswd
+Require valid-user
+
+# Remplacez le chemin AuthUserFile par le chemin absolu sur votre serveur IONOS
+# Exemple : /kunden/homepages/xx/dxxxxxxxx/htdocs/admin/.htpasswd
+
+# Sécurité supplémentaire
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Cache-Control "no-store, no-cache, must-revalidate"
+</IfModule>
+
+# Empêcher l'accès au fichier .htpasswd
+<Files ".htpasswd">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Forcer HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

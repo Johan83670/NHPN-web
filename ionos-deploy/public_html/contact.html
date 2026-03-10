@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - DETAILLIUM</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Optionnel : Google Fonts pour des icônes Material -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="navbar-logo">
+      <img src="image index/logo.png" alt="Logo DETAILLIUM">
+    </a>
+    <button class="navbar-toggle" aria-label="Menu">&#9776;</button>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="prestation-particulier.html">Particulier</a></li>
+      <li><a href="prestation-professionel.html">Professionnel</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <h2 class="main-title">Contactez-nous</h2>
+    <p class="sub">
+      Nous sommes à votre écoute pour toute question, demande de devis ou prise de rendez-vous.<br>
+      Choisissez votre mode de contact préféré : nous vous répondrons rapidement et avec le sourire !
+    </p>
+    <div class="contact-actions">
+      <button class="btn-prestation contact-btn" id="btn-social">
+        <span class="material-icons" style="vertical-align:middle;">share</span>
+        <span style="vertical-align:middle;">Réseaux sociaux</span>
+      </button>
+      <button class="btn-prestation contact-btn" id="btn-contact">
+        <span class="material-icons" style="vertical-align:middle;">contact_mail</span>
+        <span style="vertical-align:middle;">Nous contacter</span>
+      </button>
+    </div>
+    <div class="contact-info">
+      <p>
+        <span class="material-icons" style="vertical-align:middle; color:#8ecae6;">location_on</span>
+        Basés à Avignon et intervenant dans toute la région.
+      </p>
+      <p>
+        <span class="material-icons" style="vertical-align:middle; color:#8ecae6;">schedule</span>
+        Disponibles du lundi au samedi, de 8h à 19h.
+      </p>
+      <p>
+        <span class="material-icons" style="vertical-align:middle; color:#8ecae6;">email</span>
+        <a href="mailto:contact@detaillium.fr" style="color:#8ecae6;">contact@detaillium.fr</a>
+      </p>
+      <p>
+        <span class="material-icons" style="vertical-align:middle; color:#8ecae6;">phone</span>
+        <a href="tel:+33785479558" style="color:#8ecae6;">07 85 47 95 58</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Modale réseaux sociaux -->
+  <div id="modal-social" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="modal-close" id="close-social">&times;</span>
+      <h3>Choisissez un réseau social</h3>
+      <div class="social-links" style="display:flex; flex-direction:column; gap:16px; margin-top:24px;">
+        <a href="https://www.facebook.com/" target="_blank" class="btn-prestation">
+          <span class="material-icons" style="vertical-align:middle;">facebook</span>
+          <span style="vertical-align:middle;">Facebook</span>
+        </a>
+        <a href="https://www.instagram.com/detaillium_/" target="_blank" class="btn-prestation">
+          <span class="material-icons" style="vertical-align:middle;">photo_camera</span>
+          <span style="vertical-align:middle;">Instagram</span>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" class="btn-prestation">
+          <span class="material-icons" style="vertical-align:middle;">business_center</span>
+          <span style="vertical-align:middle;">LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale contact -->
+  <div id="modal-contact" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="modal-close" id="close-contact">&times;</span>
+      <h3>Comment souhaitez-vous nous contacter ?</h3>
+      <div class="contact-links" style="display:flex; flex-direction:column; gap:16px; margin-top:24px;">
+        <a href="tel:+33785479558" class="btn-prestation">
+          <span class="material-icons" style="vertical-align:middle;">call</span>
+          <span style="vertical-align:middle;">Appeler</span>
+        </a>
+
+        <button id="start-mail-flow" class="btn-prestation" aria-controls="modal-mail-flow">
+          <span class="material-icons" style="vertical-align:middle;">email</span>
+          <span style="vertical-align:middle;">Envoyer un mail</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale pour le formulaire de contact -->
+  <div id="modal-mail-flow" class="modal" style="display:none;">
+    <div class="modal-content modal-form" role="dialog" aria-modal="true" aria-labelledby="mail-flow-title">
+      <button class="modal-close" id="close-mail-flow" aria-label="Fermer">&times;</button>
+      <h3 id="mail-flow-title">Demande de devis</h3>
+
+      <form id="contact-form" action="send-contact.php" method="POST">
+        <!-- Étape 1 : Type de client -->
+        <div id="step-type" class="form-step">
+          <p class="form-label">Vous êtes :</p>
+          <div class="form-choices">
+            <button type="button" class="btn-prestation" data-type="particulier">Particulier</button>
+            <button type="button" class="btn-prestation" data-type="professionnel">Professionnel</button>
+          </div>
+          <input type="hidden" name="type" id="input-type" required>
+        </div>
+
+        <!-- Étape 2 : Prestation -->
+        <div id="step-prestation" class="form-step" style="display:none;">
+          <p class="form-label">Prestation souhaitée :</p>
+          <div id="prestations-list" class="form-choices"></div>
+          <input type="hidden" name="prestation" id="input-prestation" required>
+        </div>
+
+        <!-- Étape 3 : Coordonnées -->
+        <div id="step-coordonnees" class="form-step" style="display:none;">
+          <p class="form-label">Vos coordonnées :</p>
+          <div class="form-fields">
+            <input type="text" name="nom" id="input-nom" placeholder="Votre nom *" required>
+            <input type="email" name="email" id="input-email" placeholder="Votre email *" required>
+            <input type="tel" name="telephone" id="input-telephone" placeholder="Votre téléphone *" required>
+            <textarea name="message" id="input-message" placeholder="Message (optionnel)" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn-prestation btn-submit">
+            <span class="material-icons" style="vertical-align:middle;">send</span>
+            <span style="vertical-align:middle;">Envoyer ma demande</span>
+          </button>
+        </div>
+
+        <!-- Message de confirmation -->
+        <div id="step-confirmation" class="form-step" style="display:none;">
+          <div class="confirmation-message">
+            <span class="material-icons" style="font-size:48px; color:#4caf50;">check_circle</span>
+            <p>Votre demande a été envoyée avec succès !</p>
+            <p class="sub-message">Nous vous recontacterons dans les plus brefs délais.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="image index/logo.png" alt="Logo DETAILLIUM" style="height:40px;">
+      </div>
+      <nav class="footer-nav" aria-label="Liens de pied de page">
+        <a href="index.html">Accueil</a>
+        <a href="prestation-particulier.html">Particulier</a>
+        <a href="prestation-professionel.html">Professionnel</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" rel="noopener">
+          <span class="material-icons" aria-hidden="true">facebook</span>
+        </a>
+        <a href="https://www.instagram.com/detaillium_/" target="_blank" aria-label="Instagram" rel="noopener">
+          <span class="material-icons" aria-hidden="true">photo_camera</span>
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" rel="noopener">
+          <span class="material-icons" aria-hidden="true">business_center</span>
+        </a>
+      </div>
+      <p>
+        &copy; 2025 DETAILLIUM. Tous droits réservés.<br>
+        <a href="mailto:contact@detaillium.fr" style="color:#8ecae6;">contact@detaillium.fr</a>
+      </p>
+      <p style="font-size:0.85em; color:#888;">
+        Site réalisé par DETAILLIUM. <a href="mentions-legales.html" style="color:#8ecae6;">Mentions légales</a>
+      </p>
+    </div>
+  </footer>
+  <script src="scriptcontact.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

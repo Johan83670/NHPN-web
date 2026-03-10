@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - DETAILLIUM</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="admin-nav">
+        <div class="admin-logo">
+            <span class="material-icons">admin_panel_settings</span>
+            <span>DETAILLIUM Admin</span>
+        </div>
+        <div class="admin-user">
+            <span class="material-icons">account_circle</span>
+            <span>Administrateur</span>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <ul class="admin-menu">
+                <li class="active">
+                    <a href="index.html">
+                        <span class="material-icons">dashboard</span>
+                        Tableau de bord
+                    </a>
+                </li>
+                <li>
+                    <a href="messages.html">
+                        <span class="material-icons">mail</span>
+                        Messages
+                        <span class="badge-count">3</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="prestations.html">
+                        <span class="material-icons">build</span>
+                        Prestations
+                    </a>
+                </li>
+                <li>
+                    <a href="produits.html">
+                        <span class="material-icons">inventory</span>
+                        Produits
+                    </a>
+                </li>
+                <li>
+                    <a href="statistiques.html">
+                        <span class="material-icons">analytics</span>
+                        Statistiques
+                    </a>
+                </li>
+                <li>
+                    <a href="parametres.html">
+                        <span class="material-icons">settings</span>
+                        Paramètres
+                    </a>
+                </li>
+            </ul>
+            <div class="admin-links">
+                <a href="https://detaillium.fr" target="_blank">
+                    <span class="material-icons">language</span>
+                    Voir le site
+                </a>
+                <a href="https://boutique.detaillium.fr" target="_blank">
+                    <span class="material-icons">store</span>
+                    Voir la boutique
+                </a>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1>Tableau de bord</h1>
+                <p class="admin-date" id="current-date"></p>
+            </header>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #4CAF50;">
+                        <span class="material-icons">mail</span>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">12</span>
+                        <span class="stat-label">Messages ce mois</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #2196F3;">
+                        <span class="material-icons">event</span>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">8</span>
+                        <span class="stat-label">Devis en attente</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #FF9800;">
+                        <span class="material-icons">shopping_cart</span>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">Commandes boutique</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: #9C27B0;">
+                        <span class="material-icons">visibility</span>
+                    </div>
+                    <div class="stat-info">
+                        <span class="stat-value">1,247</span>
+                        <span class="stat-label">Visites ce mois</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="admin-panels">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Derniers messages</h2>
+                        <a href="messages.html" class="panel-link">Voir tout</a>
+                    </div>
+                    <div class="panel-content">
+                        <div class="message-item">
+                            <div class="message-avatar">JD</div>
+                            <div class="message-info">
+                                <strong>Jean Dupont</strong>
+                                <p>Demande de devis - Formule Premium</p>
+                                <span class="message-time">Il y a 2 heures</span>
+                            </div>
+                            <span class="message-badge new">Nouveau</span>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar">ML</div>
+                            <div class="message-info">
+                                <strong>Marie Leroy</strong>
+                                <p>Question sur le nettoyage mobilier</p>
+                                <span class="message-time">Hier</span>
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-avatar">PB</div>
+                            <div class="message-info">
+                                <strong>Pierre Bernard</strong>
+                                <p>Devis professionnel - 5 véhicules</p>
+                                <span class="message-time">Il y a 2 jours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Actions rapides</h2>
+                    </div>
+                    <div class="panel-content actions-grid">
+                        <button class="action-btn">
+                            <span class="material-icons">add_circle</span>
+                            Nouveau produit
+                        </button>
+                        <button class="action-btn">
+                            <span class="material-icons">edit</span>
+                            Modifier tarifs
+                        </button>
+                        <button class="action-btn">
+                            <span class="material-icons">image</span>
+                            Ajouter photos
+                        </button>
+                        <button class="action-btn">
+                            <span class="material-icons">backup</span>
+                            Sauvegarder
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="admin-panels">
+                <div class="panel full-width">
+                    <div class="panel-header">
+                        <h2>Activité récente</h2>
+                    </div>
+                    <div class="panel-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <span class="material-icons" style="color: #4CAF50;">check_circle</span>
+                                <span>Nouveau message de contact reçu</span>
+                                <span class="activity-time">14:32</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="material-icons" style="color: #2196F3;">shopping_bag</span>
+                                <span>Commande boutique #1024</span>
+                                <span class="activity-time">12:15</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="material-icons" style="color: #FF9800;">edit</span>
+                                <span>Tarifs prestations mis à jour</span>
+                                <span class="activity-time">Hier 18:45</span>
+                            </div>
+                            <div class="activity-item">
+                                <span class="material-icons" style="color: #9C27B0;">image</span>
+                                <span>3 nouvelles photos ajoutées</span>
+                                <span class="activity-time">Hier 14:20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

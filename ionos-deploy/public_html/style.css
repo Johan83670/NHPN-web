@@ -1,0 +1,820 @@
+/* ==========================================================
+   STYLE.CSS — RESTRUCTURATION
+   But : garde toutes les règles existantes, simplement
+   triées et commentées par page / composant pour faciliter
+   la maintenance (index, produits, contact, prestations, footer, etc.)
+   ========================================================== */
+
+/* ==========================
+   :root / Variables globales
+   (valeurs partagées par toutes les pages)
+   ========================== */
+:root {
+  --logo-bg: #010e14;
+  --page-bg: #111;
+  --card-bg: #181818;
+  --muted: #bbb;
+  --accent: #8ecae6;
+  --border: #232323;
+}
+
+/* ==========================
+   Base globale / typographie / body
+   ========================== */
+html, body { box-sizing: border-box; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  background: var(--page-bg);
+  color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* liens par défaut */
+a { color: inherit; text-decoration: none; }
+
+/* ==========================
+   Composants partagés
+   (utilisés sur plusieurs pages)
+   ========================== */
+
+/* boutons principale */
+.btn-prestation {
+  background-color: #ffffff; /* fallback solide */
+  background-image: linear-gradient(90deg, #ffffff 0%, #e0e0e0 80%);
+  background-repeat: no-repeat;
+  color: #181818;
+  font-weight: 600;
+  padding: 14px 38px;
+  border-radius: 30px;
+  border: 2px solid #bbb;
+  cursor: pointer;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  margin-top: 18px;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
+}
+.btn-prestation:hover,
+.btn-prestation:focus {
+  background: #181818;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+/* utilitaires */
+.container, main, .footer-content { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+.hide { display: none !important; }
+
+/* ==========================
+   NAVBAR (toutes pages)
+   ========================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  position: relative;
+  z-index: 10;
+  height: 56px;
+}
+
+.navbar-logo img {
+  height: 56px;
+  background: transparent;
+  width: auto;
+  display: block;
+  margin-left: 16px;
+  transition: transform 240ms cubic-bezier(.2,.9,.2,1), filter 240ms ease;
+  will-change: transform;
+}
+
+.navbar ul {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.navbar li { margin: 0 24px; }
+.navbar a {
+  display: block;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 18px 0;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.navbar a:hover, .navbar a:focus { color: #fff; border-bottom: 2px solid #fff; }
+
+/* burger (mobile) */
+.navbar-toggle {
+  display: none;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 20;
+  padding: 8px;
+  line-height: 1;
+}
+
+/* ==========================
+   HEADER / HERO (index, contact header, etc.)
+   Page: index.html (shared)
+   ========================== */
+header.hero,
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--logo-bg);
+  color: #111;
+  padding: 80px 0 40px 0;
+  text-align: center;
+  z-index: 1;
+}
+
+.hero .overlay {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero-slideshow .slide {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.03);
+  filter: blur(4px) brightness(0.75);
+  transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+}
+.hero-slideshow .slide.active { opacity: 1; transform: scale(1); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-slideshow .slide,
+  .hero-slideshow .slide.active { transition: none; filter: blur(2px) brightness(0.85); }
+}
+.logo-header {
+  display: block;
+  margin: 0 auto 18px auto;
+  max-width: 360px;
+  width: 90%;
+  height: auto;
+}
+
+/* masque radial pour fondu du logo */
+.logo-header,
+.navbar-logo img,
+.footer-logo img {
+  -webkit-mask-image: radial-gradient(circle at center, rgba(255,255,255,1) 60%, rgba(255,255,255,0.8) 75%, rgba(255,255,255,0) 100%);
+  mask-image: radial-gradient(circle at center, rgba(255,255,255,1) 60%, rgba(255,255,255,0.8) 75%, rgba(255,255,255,0) 100%);
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.25));
+}
+
+/* hover smooth agrandissement (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  .navbar-logo img, .logo-header {
+    transform-origin: center;
+    backface-visibility: hidden;
+  }
+  .navbar-logo:hover img, .navbar-logo:focus img, .logo-header:hover, .logo-header:focus {
+    transform: scale(1.12);
+    filter: drop-shadow(0 10px 24px rgba(0,0,0,0.35));
+  }
+}
+@media (max-width: 480px) {
+  .navbar-logo img, .logo-header { transition: transform 180ms ease; }
+  .navbar-logo:hover img, .logo-header:hover { transform: scale(1.06); filter: none; }
+}
+
+/* ==========================
+   Prestations (particulier / professionnel)
+   Pages: index.html, prestation-particulier.html, prestation-professionel.html
+   ========================== */
+
+main {
+  position: relative;
+  z-index: 5;
+  background: var(--page-bg);
+}
+
+.prestation {
+  background: var(--card-bg);
+  border-radius: 0;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+  padding: 60px 60px;
+  margin: 40px 0;
+  width: 95vw;
+  max-width: 1400px;
+  border: 1px solid var(--border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.prestation-gauche { text-align: left; align-items: flex-start; }
+.prestation-droite { text-align: right; align-items: flex-end; }
+
+.prestation h2 { color: #fff; font-size: 1.8rem; margin-bottom: 20px; font-weight: 600; }
+.prestation h3 { color: #fff; font-size: 1.5rem; margin-bottom: 16px; font-weight: 600; }
+.prestation p { color: var(--muted); font-size: 1.05rem; margin-bottom: 20px; line-height: 1.8; }
+
+.prestation-content { display: flex; align-items: center; gap: 60px; }
+.prestation-texte { flex: 1.2; z-index: 1; min-width: 0; }
+
+/* Galerie Avant/Après côte à côte avec slideshow */
+.prestation-gallery {
+  position: relative;
+  flex: 1.5;
+  min-width: 0;
+  max-width: 600px;
+  min-height: 280px;
+  aspect-ratio: 2 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0e0e0e;
+}
+
+.slide-pair {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.slide-pair.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide-pair:first-child {
+  opacity: 1;
+}
+
+.img-wrap {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.img-wrap .label {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .prestation-content {
+    flex-direction: column !important;
+    gap: 24px;
+  }
+  .prestation-content.reverse {
+    flex-direction: column-reverse !important;
+  }
+  .prestation-texte {
+    text-align: center !important;
+  }
+  .prestation-gallery {
+    max-width: 100%;
+    width: 100%;
+    min-height: 220px;
+    aspect-ratio: 2 / 1;
+  }
+}
+
+@media (max-width: 500px) {
+  .prestation-gallery {
+    min-height: 160px;
+  }
+  .slide-pair {
+    gap: 4px;
+  }
+  .img-wrap .label {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+}
+/* ==========================
+   Avant / Après paires (page prestations & pro)
+   Pages: prestation-particulier.html, prestation-professionel.html
+   ========================== */
+
+.avant-apres-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.ba-pair {
+  display: flex;
+  gap: 16px;
+  align-items: stretch;
+  justify-content: center;
+}
+.ba-figure {
+  flex: 1 1 50%;
+  background: rgba(24,24,24,0.6);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.ba-figure img { width: 100%; height: auto; display: block; object-fit: cover; max-height: clamp(160px, 28vw, 420px); }
+.ba-caption { font-weight: 700; font-size: 0.95rem; color: #fff; padding: 10px 12px 6px; background: rgba(0,0,0,0.18); }
+.ba-explanation { color: #d0d0d0; font-size: 0.92rem; padding: 0 12px 14px; line-height: 1.38; }
+
+@media (hover: hover) and (pointer: fine) {
+  .ba-figure:hover { transform: translateY(-6px); transition: transform 220ms ease; box-shadow: 0 16px 36px rgba(0,0,0,0.18); }
+}
+@media (max-width: 800px) {
+  .ba-pair { flex-direction: column; }
+  .ba-figure img { max-height: clamp(160px, 45vw, 260px); }
+  .avant-apres-grid { padding: 0 12px; }
+}
+
+/* ==========================
+   Produits / Catalogue
+   Page: produit.html
+   ========================== */
+
+.toolbar { background: #111114; border-bottom: 1px solid var(--border); }
+.tools { max-width: 1200px; margin: 0 auto; padding: 12px 16px; display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { border: 1px solid #2a2b2f; background: #141518; color: #ccc; padding: 8px 12px; border-radius: 999px; cursor: pointer; font-size: 0.9rem; transition: all 0.2s; }
+.chip.active { background: #f5f5f5; color: #111; }
+
+.search { display: flex; align-items: center; background: #141518; border: 1px solid #2a2b2f; padding: 8px 12px; border-radius: 12px; }
+.search input { background: transparent; border: none; outline: none; color: #f5f5f5; font-size: 0.95rem; width: 200px; }
+
+.select { background: #141518; border: 1px solid #2a2b2f; color: #ccc; padding: 8px 12px; border-radius: 12px; font-size: 0.95rem; }
+
+.grid, .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1200px; margin: 30px auto; padding: 0 16px; }
+
+.card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+.thumb { width: 100%; aspect-ratio: 4/3; background: transparent; }
+.thumb img { width: 100%; height: 100%; object-fit: contain; }
+.body { padding: 16px; display: grid; gap: 8px; }
+.badge { font-size: 12px; color: #aaa; }
+.title { font-weight: 600; }
+.meta { display: flex; justify-content: space-between; }
+.price { font-weight: 700; }
+.cta { display: flex; gap: 8px; margin-top: 8px; }
+.btn { flex: 1; background: #f5f5f5; color: #111; border: none; padding: 10px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+.btn.outline { background: transparent; color: #ccc; border: 1px solid #2a2b2f; }
+
+/* ==========================
+   Modales (contact / social / details)
+   Pages: contact.html, produit.html (details)
+   ========================== */
+
+.modal { position: fixed; z-index: 1000; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; }
+.modal-content {
+  background: var(--card-bg);
+  color: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+  max-width: 200px;
+  width: 90vw;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  text-align: center;
+  /* Agrandir le conteneur modal et éviter overflow des boutons */
+  width: min(90vw, 50%);        /* plus large sur desktop */
+  max-width:500px;
+  max-height: calc(100vh - 80px); /* laisse de l'espace en haut/bas */
+  overflow-y: auto;               /* scroll si contenu trop grand */
+  padding: 28px;                  /* espace intérieur pour ne pas coller aux bords */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+}
+
+/* état au survol / focus */
+.modal .modal-close:hover,
+.modal .modal-close:focus,
+.modal-close:hover,
+.modal-close:focus {
+  background: rgba(255,255,255,0.10);
+  transform: translateY(-2px);
+  outline: none;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.30);
+}
+
+.social-links, .contact-links { display: flex; flex-direction: column; gap: 18px; margin-top: 24px; }
+
+/* ==========================
+   FORMULAIRE DE CONTACT
+   ========================== */
+.modal-form {
+  max-width: 500px;
+}
+
+.form-step {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-label {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+.form-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.form-fields input,
+.form-fields textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.form-fields input:focus,
+.form-fields textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(142, 202, 230, 0.2);
+}
+
+.form-fields input::placeholder,
+.form-fields textarea::placeholder {
+  color: #666;
+}
+
+.form-fields textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+}
+
+.btn-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.confirmation-message {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.confirmation-message p {
+  margin: 16px 0 8px 0;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.confirmation-message .sub-message {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ==========================
+   NOTE / Intro text
+   (utilisé sur produit.html et autres)
+   ========================== */
+.note {
+  display: block;
+  margin: 0 auto 32px auto;
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--muted);
+  background: rgba(24,24,24,0.85);
+  padding: 18px 28px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+
+/* ==========================
+   FOOTER (toutes pages)
+   ========================== */
+.footer { background: var(--card-bg); color: var(--muted); padding: 32px 0 16px 0; text-align: center; border-top: 1px solid var(--border); margin-top: 48px; }
+.footer-content { max-width: 900px; margin: 0 auto; padding: 0 20px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.footer-logo img { height: 40px; margin-bottom: 8px; }
+.footer-nav { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+.grid, .product-grid { max-width: 98vw; padding: 0 4px; }
+
+/* ==========================
+   PAGE CONTACT - Styles spécifiques
+   ========================== */
+.main-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  margin: 60px auto 24px auto;
+  padding-bottom: 12px;
+}
+
+.sub {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 50px 0 60px 0;
+}
+
+.contact-info {
+  max-width: 650px;
+  margin: 0 auto 80px auto;
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.contact-info p {
+  margin: 16px 0;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.contact-btn {
+  min-width: 200px;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .prestation { padding: 24px 4vw; }
+  .main-title { font-size: 1.8rem; margin-top: 40px; }
+}
+
+@media (max-width: 700px) {
+  .service-list { flex-direction: column; gap: 20px; }
+  .service { padding: 18px 6px; min-width: unset; max-width: 100%; }
+  .prestation { padding: 18px 4vw; max-width: 100vw; width: 96vw; left: 50%; transform: translateX(-50%); }
+  .prestation-content { flex-direction: column; gap: 24px; align-items: stretch; }
+  .prestation-image { max-width: 100%; margin: 0 auto; justify-content: center; }
+  .main-title { font-size: 1.4rem; margin: 30px auto 20px auto; padding-bottom: 6px; }
+  .sub { font-size: 0.95rem; padding: 0 16px; margin-bottom: 24px; }
+  .note { font-size: 0.98rem; padding: 10px 2vw; max-width: 98vw; }
+  .contact-actions { flex-direction: column; gap: 16px; margin: 30px 16px 40px 16px; }
+  .contact-info { font-size: 0.98rem; padding: 24px 16px; margin: 0 16px 60px 16px; }
+  .contact-btn { width: 100%; }
+  .footer-content { padding: 0 6px; gap: 10px; }
+  .footer-nav { gap: 8px; flex-wrap: wrap; }
+  .footer-logo img { height: 32px; }
+  
+  /* Navbar mobile */
+  .navbar { 
+    flex-wrap: wrap; 
+    padding: 0; 
+    position: relative; 
+    min-height: 56px;
+    justify-content: center;
+  }
+  .navbar-logo { 
+    order: 0; 
+  }
+  .navbar-logo img { 
+    height: 42px; 
+    margin: 0; 
+  }
+  .navbar-toggle { 
+    display: block; 
+    position: absolute;
+    left: 12px;
+  }
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    background: var(--card-bg);
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    z-index: 100;
+  }
+  .navbar.open ul { 
+    display: flex; 
+  }
+  .navbar li {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .navbar li a {
+    padding: 14px 20px;
+    display: block;
+    border-bottom: none;
+  }
+  .navbar li a:hover {
+    background: rgba(255,255,255,0.05);
+  }
+  .toolbar, .tools { flex-direction: column !important; gap: 10px !important; grid-template-columns: 1fr !important; padding: 8px 2vw !important; }
+  .filters { flex-wrap: wrap; gap: 6px; }
+  .chip, .btn, .btn-prestation, .select { font-size: 0.98rem; padding: 10px 8px; max-width: 100%; width: 100%; }
+  .modal-content { max-width: 98vw; width: 98vw; padding: 12px 2vw; }
+  .grid, .product-grid { grid-template-columns: 1fr; gap: 16px; }
+  .card .body { padding: 10px 4px; }
+  .ba-pair { flex-direction: column; }
+  .ba-figure img { max-height: clamp(160px, 45vw, 260px); }
+  .avant-apres-grid { padding: 0 12px; }
+}
+
+/* Titres et centrage pour sections prestations particulier / professionnel */
+.deventure-particulier,
+.deventure-professionnels {
+  text-align: center;
+}
+
+/* titre principal de section */
+.deventure-particulier .main-title,
+.deventure-professionnels .main-title {
+  font-size: 2.2rem;        /* taille desktop */
+  line-height: 1.05;
+  font-weight: 700;
+  margin: 10px auto 22px;
+  color: #ffffff;
+  max-width: 1100px;
+  text-align: center;
+}
+
+/* ajustement pour petits écrans */
+@media (max-width: 700px) {
+  .deventure-particulier .main-title,
+  .deventure-professionnels .main-title {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+    padding: 0 12px;
+  }
+}
+
+/* Dans les modales : laisser 10px de marge intérieure de chaque côté des boutons */
+.modal .modal-content { box-sizing: border-box; padding: 32px 24px; }
+
+/* pour tous les boutons principaux à l'intérieur des modales
+   -> ne pas utiliser margin-left/right (provoque overflow),
+   utiliser marge verticale et laisser le padding du modal gérer l'espace */
+.modal .btn-prestation {
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+
+/* Agrandir le conteneur modal et éviter overflow des boutons */
+.modal .modal-content {
+  width: min(96vw, 900px);        /* plus large sur desktop */
+  max-width: 900px;
+  max-height: calc(100vh - 80px); /* laisse de l'espace en haut/bas */
+  overflow-y: auto;               /* scroll si contenu trop grand */
+  padding: 28px;                  /* espace intérieur pour ne pas coller aux bords */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Assure que les listes de boutons peuvent se placer sur plusieurs lignes */
+#prestations-list,
+#mail-type-choices {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* boutons dans modal : ne dépassent jamais le conteneur */
+.modal .btn-prestation {
+  max-width: calc(100% - 20px);
+  box-sizing: border-box;
+  white-space: normal; /* autorise le retour à la ligne du texte du bouton */
+}
+
+/* sur mobile, boutons pleine largeur */
+@media (max-width: 700px) {
+  .modal .modal-content { padding: 18px; }
+  #prestations-list, #mail-type-choices { flex-direction: column; }
+  .modal .btn-prestation { width: 100%; max-width: 100%; }
+}
+
+/* End of file */
+
+
+
+
+
+
+

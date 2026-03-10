@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique DETAILLIUM - Produits d'entretien auto</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="description" content="Découvrez notre sélection de produits d'entretien automobile professionnels : shampooing, cire, nettoyant cuir, accessoires microfibre.">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <img src="images/logo.png" alt="Logo DETAILLIUM Boutique">
+        </a>
+        <button class="navbar-toggle" aria-label="Menu">&#9776;</button>
+        <ul>
+            <li><a href="index.html">Boutique</a></li>
+            <li><a href="https://detaillium.fr" target="_blank">Nos Prestations</a></li>
+            <li><a href="https://detaillium.fr/contact.html" target="_blank">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="shop-header">
+        <div class="header-content">
+            <img src="images/logo.png" alt="Logo DETAILLIUM" class="logo-header">
+            <h1>Boutique DETAILLIUM</h1>
+            <p class="tagline">Produits professionnels pour l'entretien de votre véhicule</p>
+        </div>
+    </header>
+
+    <main>
+        <p class="note">
+            Découvrez notre sélection triée par catégories&nbsp;: <strong>Extérieur</strong>, <strong>Intérieur</strong> et <strong>Accessoires</strong>.<br>
+            Filtrez, cherchez et comparez facilement pour trouver le produit idéal.
+        </p>
+
+        <!-- BARRE D'OUTILS (Filtres + Recherche + Tri) -->
+        <div class="toolbar">
+            <div class="tools" role="region" aria-label="Outils de filtrage et recherche">
+                <div class="filters" role="tablist" aria-label="Filtres catégories">
+                    <button class="chip active" data-filter="all" role="tab" aria-selected="true">Tous</button>
+                    <button class="chip" data-filter="exterieur" role="tab">Extérieur</button>
+                    <button class="chip" data-filter="interieur" role="tab">Intérieur</button>
+                    <button class="chip" data-filter="accessoires" role="tab">Accessoires</button>
+                </div>
+                <label class="search" aria-label="Recherche produits">
+                    <span class="sr-only">Recherche</span>
+                    <input id="search" type="search" placeholder="Rechercher un produit…" autocomplete="off" />
+                </label>
+                <select id="sort" class="select" aria-label="Trier les produits">
+                    <option value="default">Tri par défaut</option>
+                    <option value="price-asc">Prix : croissant</option>
+                    <option value="price-desc">Prix : décroissant</option>
+                    <option value="name-asc">Nom : A → Z</option>
+                    <option value="name-desc">Nom : Z → A</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Grille produits -->
+        <section class="product-grid" id="productGrid">
+            
+            <!-- Produit Extérieur 1 -->
+            <article class="card" data-category="exterieur" data-name="Shampooing carrosserie" data-price="12.90">
+                <div class="thumb"><img src="images/produit-shampoing.jpg" alt="Shampooing carrosserie DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Extérieur</div>
+                    <div class="title">Shampooing carrosserie</div>
+                    <div class="meta">
+                        <span class="muted">500ml</span>
+                        <span class="price">12,90 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Shampooing haute mousse pour un lavage en douceur de votre carrosserie. Formule pH neutre.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit Extérieur 2 -->
+            <article class="card" data-category="exterieur" data-name="Mousse active pH neutre" data-price="14.90">
+                <div class="thumb"><img src="images/produit-mousse.jpg" alt="Mousse active pH neutre DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Extérieur</div>
+                    <div class="title">Mousse active pH neutre</div>
+                    <div class="meta">
+                        <span class="muted">1L</span>
+                        <span class="price">14,90 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Mousse active pré-lavage qui décolle la saleté sans frotter. Idéale pour les jantes et bas de caisse.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit Extérieur 3 -->
+            <article class="card" data-category="exterieur" data-name="Cire de protection" data-price="24.90">
+                <div class="thumb"><img src="images/produit-cire.jpg" alt="Cire de protection DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Extérieur</div>
+                    <div class="title">Cire de protection</div>
+                    <div class="meta">
+                        <span class="muted">200ml</span>
+                        <span class="price">24,90 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Cire de finition longue durée. Protection et brillance jusqu'à 3 mois.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit Intérieur 1 -->
+            <article class="card" data-category="interieur" data-name="Nettoyant cuir" data-price="18.50">
+                <div class="thumb"><img src="images/produit-cuir.jpg" alt="Nettoyant cuir DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Intérieur</div>
+                    <div class="title">Nettoyant cuir</div>
+                    <div class="meta">
+                        <span class="muted">500ml</span>
+                        <span class="price">18,50 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Nettoyant doux pour cuir et simili-cuir. Nettoie et nourrit sans laisser de résidu gras.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit Intérieur 2 -->
+            <article class="card" data-category="interieur" data-name="Produit multi-surfaces" data-price="11.90">
+                <div class="thumb"><img src="images/produit-multi.jpg" alt="Produit multi-surfaces DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Intérieur</div>
+                    <div class="title">Produit multi-surfaces</div>
+                    <div class="meta">
+                        <span class="muted">750ml</span>
+                        <span class="price">11,90 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Nettoyant polyvalent pour tableau de bord, plastiques et vitres intérieures. Parfum frais.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Produit Intérieur 3 -->
+            <article class="card" data-category="interieur" data-name="Désodorisant premium" data-price="9.90">
+                <div class="thumb"><img src="images/produit-desodorisant.jpg" alt="Désodorisant premium DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Intérieur</div>
+                    <div class="title">Désodorisant premium</div>
+                    <div class="meta">
+                        <span class="muted">100ml</span>
+                        <span class="price">9,90 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Neutralise les odeurs et laisse un parfum agréable longue durée. Sans alcool.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Accessoire 1 -->
+            <article class="card" data-category="accessoires" data-name="Gant microfibre" data-price="7.50">
+                <div class="thumb"><img src="images/produit-gant.jpg" alt="Gant microfibre DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Accessoires</div>
+                    <div class="title">Gant microfibre</div>
+                    <div class="meta">
+                        <span class="muted">Lot de 2</span>
+                        <span class="price">7,50 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Gant doux et absorbant pour un lavage sans rayures. Ultra doux pour toutes surfaces.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Accessoire 2 -->
+            <article class="card" data-category="accessoires" data-name="Chiffons microfibre" data-price="12.00">
+                <div class="thumb"><img src="images/produit-chiffons.jpg" alt="Chiffons microfibre DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Accessoires</div>
+                    <div class="title">Chiffons microfibre</div>
+                    <div class="meta">
+                        <span class="muted">Pack de 5</span>
+                        <span class="price">12,00 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Chiffons ultra-absorbants 40x40cm. Parfaits pour le séchage et le lustrage.
+                    </div>
+                </div>
+            </article>
+
+            <!-- Accessoire 3 -->
+            <article class="card" data-category="accessoires" data-name="Brosse jantes" data-price="8.90">
+                <div class="thumb"><img src="images/produit-brosse.jpg" alt="Brosse jantes DETAILLIUM" loading="lazy"></div>
+                <div class="body">
+                    <div class="badge">Accessoires</div>
+                    <div class="title">Brosse jantes</div>
+                    <div class="meta">
+                        <span class="muted">Ergonomique</span>
+                        <span class="price">8,90 €</span>
+                    </div>
+                    <div class="cta">
+                        <button class="btn add-cart">Ajouter</button>
+                        <button class="btn outline details-btn">Détails</button>
+                    </div>
+                    <div class="desc" style="display:none;">
+                        Brosse souple pour nettoyer les jantes sans les rayer. Manche ergonomique antidérapant.
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Panier flottant -->
+    <div id="cart-widget" class="cart-widget">
+        <button id="cart-toggle" class="cart-toggle" aria-label="Voir le panier">
+            <span class="material-icons">shopping_cart</span>
+            <span id="cart-count" class="cart-count">0</span>
+        </button>
+        <div id="cart-dropdown" class="cart-dropdown" style="display: none;">
+            <h3>Votre panier</h3>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <span>Total :</span>
+                <span id="cart-total-price">0,00 €</span>
+            </div>
+            <button class="btn checkout-btn" id="checkout-btn">Commander</button>
+        </div>
+    </div>
+
+    <!-- Modale détails produit -->
+    <div id="productModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Modale commande -->
+    <div id="orderModal" class="modal" style="display:none;">
+        <div class="modal-content modal-form">
+            <span class="modal-close" id="orderClose">&times;</span>
+            <h3>Finaliser votre commande</h3>
+            <p class="order-note">Pour passer commande, contactez-nous avec votre sélection :</p>
+            <div id="order-summary"></div>
+            <div class="order-actions">
+                <a href="mailto:contact@detaillium.fr" class="btn-prestation">
+                    <span class="material-icons" style="vertical-align:middle;">email</span>
+                    Envoyer par email
+                </a>
+                <a href="tel:+33785479558" class="btn-prestation">
+                    <span class="material-icons" style="vertical-align:middle;">call</span>
+                    Appeler
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Logo DETAILLIUM" style="height:40px;">
+            </div>
+            <nav class="footer-nav" aria-label="Liens de pied de page">
+                <a href="index.html">Boutique</a>
+                <a href="https://detaillium.fr" target="_blank">Prestations</a>
+                <a href="https://detaillium.fr/contact.html" target="_blank">Contact</a>
+                <a href="https://detaillium.fr/mentions-legales.html" target="_blank">Mentions légales</a>
+            </nav>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" rel="noopener">
+                    <span class="material-icons" aria-hidden="true">facebook</span>
+                </a>
+                <a href="https://www.instagram.com/detaillium_/" target="_blank" aria-label="Instagram" rel="noopener">
+                    <span class="material-icons" aria-hidden="true">photo_camera</span>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn" rel="noopener">
+                    <span class="material-icons" aria-hidden="true">business_center</span>
+                </a>
+            </div>
+            <p>
+                &copy; 2025 DETAILLIUM Boutique. Tous droits réservés.<br>
+                <a href="mailto:contact@detaillium.fr" style="color:#8ecae6;">contact@detaillium.fr</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
